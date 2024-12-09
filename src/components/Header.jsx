@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Button, Box, AppBar, Toolbar, Typography } from '@mui/material';
 
 function Header() {
+    // creates navigation with the aid of mui
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">

@@ -19,6 +19,7 @@ const theme = createTheme({
 });
 
 function App() {
+  // creates routes
   const router = createBrowserRouter([
     {
       path: '/',

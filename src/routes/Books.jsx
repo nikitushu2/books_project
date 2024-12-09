@@ -25,6 +25,7 @@ function Books() {
 
   // TODO: Replace axios with useAxios hook
   async function getBooks() {
+    // gets books
     try {
       const response = await axios.get('http://localhost:3000/books');
       setBooks(response.data);

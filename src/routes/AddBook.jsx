@@ -27,6 +27,7 @@ function AddBook() {
   });
 
   const genreChangeHandler = (event) => {
+    // changes genre
     const { value } = event.target;
     setBook({
       ...book,
@@ -35,6 +36,7 @@ function AddBook() {
   };
 
   const rateChangeHandler = (event) => {
+    // changes rate
     const { value } = event.target;
     setBook({
       ...book,
@@ -43,6 +45,7 @@ function AddBook() {
   };
 
   const addBookHandler = (e) => {
+    // sets completion
     const { name, value, checked, type } = e.target;
     if (type === 'checkbox' && name === 'completed') {
       setBook({ ...book, [name]: checked });
@@ -52,6 +55,7 @@ function AddBook() {
   };
 
   function postHandler() {
+    // adds a book via axios hook
     post('books', book);
   }
 

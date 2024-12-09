@@ -7,6 +7,7 @@ const useAxios = (baseUrl) => {
   const [loading, setLoading] = useState(false);
 
   const showAlert = (message, type) => {
+    // shows alert
     setAlert({ show: true, message, type });
     setTimeout(() => {
       setAlert((currentAlert) => ({ ...currentAlert, show: false }));
@@ -14,6 +15,7 @@ const useAxios = (baseUrl) => {
   };
 
   const makeRequest = async (method, endpoint, payload = null) => {
+    // makes request
     try {
       setLoading(true);
       const response = await axios[method](`${baseUrl}/${endpoint}`, payload);
