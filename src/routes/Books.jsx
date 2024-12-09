@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import useAxios from '../services/useAxios';
 import {
   Box,
   Card,
@@ -16,19 +16,20 @@ import {
 function Books() {
   const [books, setBooks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { alert, get, data} = useAxios('http://localhost:3000');
 
   useEffect(() => {
     if (books.length === 0) {
       getBooks();
     }
-  }, []);
+  }, [data]);
 
   // TODO: Replace axios with useAxios hook
   async function getBooks() {
     // gets books
     try {
-      const response = await axios.get('http://localhost:3000/books');
-      setBooks(response.data);
+      await get('books');
+      setBooks(data);
       setIsLoading(false);
     } catch (error) {
       console.error(error);
