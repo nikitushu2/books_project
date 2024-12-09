@@ -64,7 +64,8 @@ function Books() {
             useFlexGap
             flexWrap="wrap"
           >
-            {books.map((book) => (
+            {books.map((book) => 
+            (
               <Card
                 sx={{
                   display: 'flex',
@@ -75,9 +76,14 @@ function Books() {
                 key={book.name}
               >
                 <CardMedia
+                  component="img"
                   sx={{ height: 250 }}
                   image={book.img}
                   title={book.name}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = '/public/fallback.png'
+                  }}
                 />
                 <Box sx={{ pt: 2, pl: 2 }}>
                   {book.genres.map((genre, i) => (
