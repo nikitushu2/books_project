@@ -70,7 +70,7 @@ function AddBook() {
   };
 
   function postHandler(e) {
-    // adds a book via axios hook
+    // adds a book via axios
     e.preventDefault();
     post('books', book);
   }
