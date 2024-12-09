@@ -12,17 +12,30 @@ import {
   Chip,
   Typography,
 } from '@mui/material';
+import TextField from '@mui/material/TextField';
+import * as React from 'react';
 
 function Books() {
   const [books, setBooks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { alert, get, data} = useAxios('http://localhost:3000');
+  const [term, setTerm] = useState('');
 
   useEffect(() => {
     if (books.length === 0) {
       getBooks();
     }
-  }, [data]);
+  }, []);
+
+  useEffect(() => {
+    if (data) {
+      const filteredBooks = data.filter((book) =>
+        book.name.toLowerCase().includes(term.toLowerCase())
+      );
+      setBooks(filteredBooks);
+      setIsLoading(false);
+    }
+  }, [term, data]);
 
   // TODO: Replace axios with useAxios hook
   async function getBooks() {
@@ -41,6 +54,8 @@ function Books() {
     <Box sx={{ mx: 'auto', p: 2 }}>
       {isLoading && <CircularProgress />}
       {!isLoading && (
+        <>
+        <TextField id="outlined-basic" label="Search" variant="outlined" value={term} onChange={(event) => setTerm(event.target.value)} sx={{marginBottom: '10px'}}/>
         <div>
           <Stack
             sx={{ justifyContent: 'space-around' }}
@@ -99,6 +114,7 @@ function Books() {
             ))}
           </Stack>
         </div>
+        </>
       )}
     </Box>
   );
