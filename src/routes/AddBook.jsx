@@ -69,8 +69,9 @@ function AddBook() {
     }
   };
 
-  function postHandler() {
+  function postHandler(e) {
     // adds a book via axios hook
+    e.preventDefault();
     post('books', book);
   }
 
