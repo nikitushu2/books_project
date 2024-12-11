@@ -14,6 +14,7 @@ import {
 } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import * as React from 'react';
+import {Link} from "react-router-dom";
 
 function Books() {
   const [books, setBooks] = useState([]);
@@ -114,7 +115,7 @@ function Books() {
                     readOnly
                     size="small"
                   />
-                  <Button size="small">Learn More</Button>
+                  <Link to={`/book/${book.id}`}><Button size="small">Learn More</Button></Link>
                 </CardActions>
               </Card>
             ))}
