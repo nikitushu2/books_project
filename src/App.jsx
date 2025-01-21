@@ -11,7 +11,7 @@ import SinglePage from "./components/SinglePage.jsx";
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#004d40',
+      main: '#bfcfff',
     },
     secondary: {
       main: '#ffab40',
